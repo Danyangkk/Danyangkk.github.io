@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#313aa0",
+                    "on-error": "#690005",
+                    "outline": "#908f9e",
+                    "on-surface-variant": "#c6c5d5",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "secondary-fixed": "#e0e0ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#3a393a",
+                    "on-secondary-fixed-variant": "#313aa0",
+                    "on-primary-fixed-variant": "#2e3aa2",
+                    "on-surface": "#e5e1e3",
+                    "on-secondary-container": "#a8afff",
+                    "on-secondary": "#161f89",
+                    "on-secondary-fixed": "#000668",
+                    "on-primary-container": "#fdfaff",
+                    "tertiary-fixed-dim": "#ffb867",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#1c1b1d",
+                    "primary-container": "#5e6ad2",
+                    "outline-variant": "#454652",
+                    "inverse-primary": "#4854bb",
+                    "tertiary-fixed": "#ffddbb",
+                    "secondary": "#bdc2ff",
+                    "on-primary": "#121f8b",
+                    "primary-fixed": "#dfe0ff",
+                    "on-primary-fixed": "#000965",
+                    "tertiary": "#ffb867",
+                    "on-tertiary": "#482900",
+                    "on-background": "#e5e1e3",
+                    "on-tertiary-container": "#fffaf8",
+                    "surface-tint": "#bdc2ff",
+                    "surface-container-lowest": "#0e0e0f",
+                    "inverse-on-surface": "#313032",
+                    "tertiary-container": "#a56500",
+                    "surface-container-high": "#2a2a2b",
+                    "surface": "#131315",
+                    "primary-fixed-dim": "#bdc2ff",
+                    "surface-container": "#201f21",
+                    "background": "#131315",
+                    "inverse-surface": "#e5e1e3",
+                    "surface-container-highest": "#353436",
+                    "surface-variant": "#353436",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#673d00",
+                    "on-tertiary-fixed": "#2b1700",
+                    "primary": "#bdc2ff",
+                    "surface-dim": "#131315"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "max-width": "1200px",
+                    "base": "4px",
+                    "margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Geist"],
+                    "body-md": ["Inter"],
+                    "label-mono": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #131315;
+    color: #e5e1e3;
+    -webkit-font-smoothing: antialiased
+    }
+.grid-overlay {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px
+    }
+.hero-glow {
+    background: radial-gradient(60% 50% at 50% 0%, rgba(94, 106, 210, 0.15) 0%, rgba(19, 19, 21, 0) 100%)
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06)
+    }
+.noise-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBBYXiZ2GtBbWMvpbqiZPwuxfa2ocywQp6Vfv_t1MwtD9gcsskZ9wvZNqgO3DIl63tZ9dlgYDG30PzOU2-CUmmx5JwPEpbuVZd4dzVy-UnAwkjEpKUdZSF9CAKAFncn0KZNnKrnrlfOigRGNjJnMpN7teUTi-EXtbqc5yBs9HLUniWfDjwWuKzeCg9k31jg1JqvMKAEDRqerN3seEoGTsWRa_4_KVejgcSWQB59uc2-NvAjPMpH5fp0QFRvfd1K42Axu06QBTx-Dow);
+    opacity: 0.02
+    }</style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Grid Overlay and Glow -->
+<div class="fixed inset-0 pointer-events-none grid-overlay z-0"></div>
+<div class="fixed inset-0 pointer-events-none hero-glow z-0"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-surface/80 backdrop-blur-md">
+<div class="flex justify-between items-center h-16 px-gutter max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface">PM/AI</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-body-md text-body-md" href="#">首页</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-body-md text-body-md" href="#">案例</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-body-md text-body-md" href="#">技能</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">写作</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-body-md text-body-md" href="#">联系</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-body-md text-body-md hover:scale-[1.02] transition-all duration-300 shadow-[0_0_20px_rgba(94,106,210,0.1)] active:scale-95">
+                「下载简历」
+            </button>
+</div>
+</header>
+<main class="relative z-10 pt-32 pb-24">
+<div class="max-w-max-width mx-auto px-gutter">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+<div class="max-w-2xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="inline-block w-8 h-[1px] bg-primary"></span>
+<span class="font-label-mono text-label-mono text-primary uppercase tracking-widest">Observations &amp; Strategy</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-6">Thoughts</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        关于推理成本、模型对齐与 AI-Native 交互形态的深度解析。记录我在 Day 0 工程环境下的行业观察与产品化思考。
+                    </p>
+</div>
+<div>
+<button class="flex items-center gap-3 border border-white/10 px-6 py-3 rounded-xl hover:bg-white/5 transition-all duration-300 text-on-surface-variant font-label-mono text-label-mono uppercase tracking-wider group">
+<span class="material-symbols-outlined text-[18px]">rss_feed</span>
+                        订阅 / RSS
+                        <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Blog Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="glass-card rounded-xl overflow-hidden group cursor-pointer flex flex-col h-full hover:border-primary/30 transition-colors duration-500">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 noise-texture z-10"></div>
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" data-alt="An abstract 3D visualization of digital architecture featuring floating geometric shards and complex interconnected nodes. The aesthetic is futuristic and high-tech, using a deep indigo and midnight black palette with sharp primary color highlights. The atmosphere is dense with technical precision and structural depth, reflecting modern AI computing themes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpr0Usfwd-u9HkbzbkmqMuuxeWhdno30t6eBZTu_dfEqkkcUMC6TrJd01JuwQ0qXIN20whsOQ4iLtKIxCLdGHzjREpm5Dw4kOCIS-Mc2VdK25v4LB18n1_pGjYfgJkUZRE_yMDNKyzViopurFJd1wwt0vvWkBNHVLfDdll4YNPCbiCwFI2OMiC62qaqTVrF7S2rZftLSKMSZREybfejcWVqfqMbRpP4zdFlP02Egb2ujEzhyp8lvSm-rmzsae6gab1TU5scCGk5_k"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary/10 border border-primary/20 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">Economy</span>
+<span class="font-label-mono text-label-mono text-outline">MAR 14, 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors leading-tight">Token 成本核算 / 推理经济性</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">
+                            在长文本与大模型普及的当下，推理成本如何从工程边缘话题走向商业决策核心？解析单位 Token 价值与护栏成本的博弈。
+                        </p>
+<div class="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
+<div class="flex items-center gap-2 text-outline font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                12 MIN READ
+                            </div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="glass-card rounded-xl overflow-hidden group cursor-pointer flex flex-col h-full hover:border-primary/30 transition-colors duration-500">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 noise-texture z-10"></div>
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" data-alt="An ethereal abstract landscape composed of translucent glass prisms and glowing wireframe grids that suggest a digital hallucination. The lighting is low-key with a soft indigo glow radiating from the center, creating a sense of depth and mystery. The visual style is minimalist and clean, with razor-thin lines and subtle atmospheric haze, symbolizing AI safety and risk evaluation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFfxf3rxBaZ_hqznMnAv60qTkUPRqEaVDfOqCx7J-DeHkv1tMsfKeUnINhIB18wwvjTqn7Zc2J-TGx51N-MVBbw9owML1hMhYt4TDfF3upA2iWqaUDyA0PjXrBDo9B2TWIASlptApnYOlw7rGeYc9ajO98aGvDoYoTCMOsDVP2CAci155TDwk7SBR_PGjoHfXijCoC_L2m_6dJZkAaCkppottWpWwP60r_wRTY4dcg8uIdXNgUUR4sKcERqjGuOs5it6aH9h2aRrk"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary/10 border border-primary/20 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">Safety</span>
+<span class="font-label-mono text-label-mono text-outline">FEB 28, 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors leading-tight">幻觉风险与评测/护栏产品化</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">
+                            从实验室基准测试到生产环境的实时干预。探讨如何构建可量化的安全防线，在不牺牲创造力的前提下实现确定性输出。
+                        </p>
+<div class="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
+<div class="flex items-center gap-2 text-outline font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                8 MIN READ
+                            </div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="glass-card rounded-xl overflow-hidden group cursor-pointer flex flex-col h-full hover:border-primary/30 transition-colors duration-500">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 noise-texture z-10"></div>
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" data-alt="A sophisticated dark-mode UI abstract concept showing layered semi-transparent panels with soft inner glows and precise typography markers. The color scheme is dominated by deep charcoal and soft violet-indigo tones, emphasizing a premium developer-tool aesthetic. Sharp edges, minimalist navigation elements, and a faint noise texture convey a high-performance, AI-driven digital environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3qXfAotFwS7x7WhrVFv5Z08mqKqibpVvMcyOidYSg59ybYnflPB8XnuLG-GoE6hg9TLLyS5S2mLswNgH9yx3OvTF6As9RzxUroOxy7jOMnXY82PqtJpsz83Gt-JTc3OeOP9ACYrMS1w3qx6Oe8ExXz3QuDmGsqtyGNBThUrEmLwuT9aDcT4wK4siWE6f0tGulHcXPCxSExk91J3-8dIb2vLYUjrrQ250bN0cKLUN-WJgnbN4_L4NMCSUx8RtzPh47AxTs7UBZ1ww"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary/10 border border-primary/20 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded uppercase tracking-tighter">UI Principles</span>
+<span class="font-label-mono text-label-mono text-outline">JAN 15, 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors leading-tight">AI-Native 界面原则</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">
+                            当对话框不再是唯一解。重新定义输入意图、流式反馈与动态布局在下一代 AI 产品中的核心体验架构。
+                        </p>
+<div class="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
+<div class="flex items-center gap-2 text-outline font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                15 MIN READ
+                            </div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Bottom CTA -->
+<div class="mt-24 p-12 glass-card rounded-2xl flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">mail</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-4">获取最新的行业洞察</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-8">
+                    每月两次，深度解析 AI 产品前沿动态。拒绝噪音，只分享有价值的逻辑。
+                </p>
+<div class="flex w-full max-w-md gap-3">
+<input class="flex-grow bg-[#050506] border border-white/10 rounded-xl px-4 py-3 focus:border-primary outline-none text-on-surface transition-all placeholder:text-outline font-body-md" placeholder="email@address.com" type="email"/>
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-xl font-bold hover:scale-[1.02] transition-all">加入订阅</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/5 bg-surface mt-20 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 px-gutter max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md text-on-surface font-bold tracking-tighter">PM/AI</div>
+<nav class="flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono uppercase tracking-widest" href="#">首页</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono uppercase tracking-widest" href="#">案例</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono uppercase tracking-widest" href="#">技能</a>
+<a class="text-primary font-label-mono text-label-mono uppercase tracking-widest" href="#">写作</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono uppercase tracking-widest" href="#">联系</a>
+</nav>
+<div class="font-label-mono text-label-mono text-outline">
+                使用 Framer 与 AI 搭建 © 2024
+            </div>
+</div>
+</footer>
+</body></html>

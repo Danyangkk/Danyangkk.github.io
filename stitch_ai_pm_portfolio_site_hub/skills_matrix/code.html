@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131315;
+            color: #e5e1e3;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .bg-grid {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .radial-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(94, 106, 210, 0.15) 0%, transparent 70%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#313aa0",
+                        "on-error": "#690005",
+                        "outline": "#908f9e",
+                        "on-surface-variant": "#c6c5d5",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "secondary-fixed": "#e0e0ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#3a393a",
+                        "on-secondary-fixed-variant": "#313aa0",
+                        "on-primary-fixed-variant": "#2e3aa2",
+                        "on-surface": "#e5e1e3",
+                        "on-secondary-container": "#a8afff",
+                        "on-secondary": "#161f89",
+                        "on-secondary-fixed": "#000668",
+                        "on-primary-container": "#fdfaff",
+                        "tertiary-fixed-dim": "#ffb867",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1c1b1d",
+                        "primary-container": "#5e6ad2",
+                        "outline-variant": "#454652",
+                        "inverse-primary": "#4854bb",
+                        "tertiary-fixed": "#ffddbb",
+                        "secondary": "#bdc2ff",
+                        "on-primary": "#121f8b",
+                        "primary-fixed": "#dfe0ff",
+                        "on-primary-fixed": "#000965",
+                        "tertiary": "#ffb867",
+                        "on-tertiary": "#482900",
+                        "on-background": "#e5e1e3",
+                        "on-tertiary-container": "#fffaf8",
+                        "surface-tint": "#bdc2ff",
+                        "surface-container-lowest": "#0e0e0f",
+                        "inverse-on-surface": "#313032",
+                        "tertiary-container": "#a56500",
+                        "surface-container-high": "#2a2a2b",
+                        "surface": "#131315",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "surface-container": "#201f21",
+                        "background": "#131315",
+                        "inverse-surface": "#e5e1e3",
+                        "surface-container-highest": "#353436",
+                        "surface-variant": "#353436",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "on-tertiary-fixed": "#2b1700",
+                        "primary": "#bdc2ff",
+                        "surface-dim": "#131315"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "max-width": "1200px",
+                        "base": "4px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist"],
+                        "headline-xl": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen relative overflow-x-hidden font-body-md text-body-md">
+<div class="fixed inset-0 bg-grid pointer-events-none opacity-20"></div>
+<div class="fixed inset-0 radial-glow pointer-events-none"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-surface/80 backdrop-blur-md shadow-[0_0_20px_rgba(94,106,210,0.1)]">
+<div class="flex justify-between items-center h-16 px-gutter max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface">PM/AI</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-[1.02]" href="#">首页</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-[1.02]" href="#">案例</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">技能</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-[1.02]" href="#">写作</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:scale-[1.02]" href="#">联系</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-medium hover:scale-[1.02] transition-all duration-300 shadow-[0_0_15px_rgba(94,106,210,0.3)] active:scale-95">「下载简历」</button>
+</div>
+</header>
+<main class="relative z-10 pt-32 pb-24 px-gutter max-w-max-width mx-auto">
+<!-- Title & Introduction -->
+<div class="mb-16 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-6 bg-primary-container"></div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">技能矩阵 / 技术栈与能力</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                作为 AI 产品经理，我构建了以算法深度感知为核心，向工程落地与商业策略辐射的能力体系，确保从 0 到 1 打造具有技术护城河的 AI 驱动产品。
+            </p>
+</div>
+<!-- Legend -->
+<div class="flex flex-wrap gap-4 mb-10 items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">熟练度等级:</span>
+<div class="flex items-center gap-2 px-3 py-1 bg-primary-container/20 border border-primary-container/30 rounded-full">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-label-mono text-label-mono text-primary">核心聚焦 / 专家</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full">
+<div class="w-2 h-2 rounded-full bg-on-surface-variant/40"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">工程实践 / 熟练</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full">
+<div class="w-2 h-2 rounded-full bg-on-surface-variant/20"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">理论认知 / 了解</span>
+</div>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-fr">
+<!-- Category 1: 模型与算法认知 -->
+<div class="md:col-span-8 glass-panel p-8 rounded-xl hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 blur-[80px] -mr-32 -mt-32 group-hover:bg-primary-container/20 transition-colors"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="neurology">neurology</span>
+<h3 class="font-headline-md text-headline-md">模型与算法认知</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="space-y-4">
+<h4 class="font-label-mono text-label-mono text-primary uppercase">Generative AI</h4>
+<ul class="space-y-3">
+<li class="flex items-center justify-between">
+<span class="text-on-surface">GPT-4 / Claude 3.5 / Llama 3</span>
+<div class="flex gap-1">
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+</div>
+</li>
+<li class="flex items-center justify-between">
+<span class="text-on-surface">Multimodal (DALL·E, Sora)</span>
+<div class="flex gap-1">
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-white/10"></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-mono text-label-mono text-primary uppercase">Core ML/DL</h4>
+<ul class="space-y-3">
+<li class="flex items-center justify-between">
+<span class="text-on-surface">Transformer Architecture</span>
+<div class="flex gap-1">
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+</div>
+</li>
+<li class="flex items-center justify-between">
+<span class="text-on-surface">Fine-tuning &amp; RLHF</span>
+<div class="flex gap-1">
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-white/10"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-white/5">
+<p class="text-on-surface-variant font-body-md italic text-sm">能够解析 Attention 机制并根据业务场景选择最适切的基础模型。 </p>
+</div>
+</div>
+<!-- Category 2: AI 工程生态 -->
+<div class="md:col-span-4 glass-panel p-8 rounded-xl hover:scale-[1.01] transition-all duration-500 group">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="account_tree">account_tree</span>
+<h3 class="font-headline-md text-headline-md">AI 工程生态</h3>
+</div>
+<div class="space-y-6">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-medium">LangChain / LlamaIndex</span>
+<span class="bg-primary-container/10 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded border border-primary-container/20">CORE</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[90%]"></div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-medium">Vector DB (Pinecone/Milvus)</span>
+<span class="bg-white/5 text-on-surface-variant font-label-mono text-[10px] px-2 py-0.5 rounded border border-white/10">SKILLED</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[75%]"></div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-medium">Prompt Engineering</span>
+<span class="bg-primary-container/10 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded border border-primary-container/20">EXPERT</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[95%]"></div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-on-surface font-medium">RAG Architecture</span>
+<span class="bg-primary-container/10 text-primary font-label-mono text-[10px] px-2 py-0.5 rounded border border-primary-container/20">CORE</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 3: 数据与工程基础 -->
+<div class="md:col-span-4 glass-panel p-8 rounded-xl hover:scale-[1.01] transition-all duration-500">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<h3 class="font-headline-md text-headline-md">数据与工程基础</h3>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="px-4 py-3 bg-white/5 border border-white/10 rounded-lg flex-1 min-w-[120px] text-center hover:bg-white/10 transition-colors">
+<span class="font-label-mono text-primary block mb-1">PYTHON</span>
+<span class="text-sm">Pandas/NumPy</span>
+</div>
+<div class="px-4 py-3 bg-white/5 border border-white/10 rounded-lg flex-1 min-w-[120px] text-center hover:bg-white/10 transition-colors">
+<span class="font-label-mono text-primary block mb-1">SQL</span>
+<span class="text-sm">ETL/Analysis</span>
+</div>
+<div class="px-4 py-3 bg-white/5 border border-white/10 rounded-lg flex-1 min-w-[120px] text-center hover:bg-white/10 transition-colors w-full">
+<span class="font-label-mono text-primary block mb-1">EXPERIMENT</span>
+<span class="text-sm">A/B Testing &amp; Evaluation</span>
+</div>
+</div>
+<div class="mt-6">
+<div class="flex items-center gap-2 p-3 bg-secondary-container/10 rounded border border-secondary-container/20">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="info">info</span>
+<p class="text-xs text-on-surface-variant">具备阅读与维护脚本的能力，能深度参与工程评审。</p>
+</div>
+</div>
+</div>
+<!-- Category 4: AI PM 核心能力 -->
+<div class="md:col-span-8 glass-panel p-8 rounded-xl hover:scale-[1.01] transition-all duration-500 flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 bg-gradient-to-br from-primary via-transparent to-tertiary"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="strategy">strategy</span>
+<h3 class="font-headline-md text-headline-md">AI PM 核心能力</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="token">token</span>
+</div>
+<h5 class="font-bold text-on-surface">商业化策略</h5>
+<p class="text-sm text-on-surface-variant">Token 成本优化、SaaS 定价模型、AI 算力治理。</p>
+</div>
+<div class="space-y-4">
+<div class="w-10 h-10 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</div>
+<h5 class="font-bold text-on-surface">AI PRD 定义</h5>
+<p class="text-sm text-on-surface-variant">从模型幻觉防御到 Evaluation 系统定义的深度文档。</p>
+</div>
+<div class="space-y-4">
+<div class="w-10 h-10 rounded bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="insights">insights</span>
+</div>
+<h5 class="font-bold text-on-surface">产品增长 &amp; 评估</h5>
+<p class="text-sm text-on-surface-variant">建立基于 LLM 的意图识别与满意度量化体系。</p>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-white/5 rounded-lg border border-white/5">
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant">核心护城河: 将复杂算法抽象为用户价值。</span>
+<span class="material-symbols-outlined text-primary" data-icon="verified" data-weight="fill">verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Vision / Future Tech Stack -->
+<section class="mt-24">
+<h2 class="font-headline-lg text-headline-lg mb-12 text-center">正在深耕的领域</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-6 border border-white/5 rounded-lg text-center hover:border-primary/40 transition-colors">
+<span class="font-label-mono text-on-surface-variant mb-2 block text-[10px]">NEXT PHASE</span>
+<p class="font-medium text-on-surface">AI Agents 生态</p>
+</div>
+<div class="p-6 border border-white/5 rounded-lg text-center hover:border-primary/40 transition-colors">
+<span class="font-label-mono text-on-surface-variant mb-2 block text-[10px]">NEXT PHASE</span>
+<p class="font-medium text-on-surface">私有化部署方案</p>
+</div>
+<div class="p-6 border border-white/5 rounded-lg text-center hover:border-primary/40 transition-colors">
+<span class="font-label-mono text-on-surface-variant mb-2 block text-[10px]">NEXT PHASE</span>
+<p class="font-medium text-on-surface">端侧大模型集成</p>
+</div>
+<div class="p-6 border border-white/5 rounded-lg text-center hover:border-primary/40 transition-colors">
+<span class="font-label-mono text-on-surface-variant mb-2 block text-[10px]">NEXT PHASE</span>
+<p class="font-medium text-on-surface">模型安全与合规</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/5 bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 px-gutter max-w-max-width mx-auto">
+<div class="font-headline-md text-headline-md text-on-surface">PM/AI</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono" href="#">首页</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono" href="#">案例</a>
+<a class="text-primary hover:text-on-surface transition-colors font-label-mono text-label-mono" href="#">技能</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono" href="#">写作</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-mono text-label-mono" href="#">联系</a>
+</div>
+<div class="text-on-surface-variant font-label-mono text-label-mono">使用 Framer 与 AI 搭建 © 2024</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,27 @@
+/* Styles for PixelCard canvas + layering (imported by pxel_card.tsx)
+ * Layer order (bottom → top): photo/content → pixel canvas (effect on top)
+ */
+.pixel-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  outline: none;
+}
+
+/* Content (e.g. image) sits behind the effect */
+.pixel-card > :not(.pixel-canvas) {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Canvas draws the pixel hover effect on top; gaps stay transparent so image shows through */
+.pixel-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}

@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-[#131315] text-on-surface;
+    font-family: Inter, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply border border-white/[0.06] bg-white/[0.05] backdrop-blur-[12px];
+  }
+
+  .glass-panel {
+    @apply border border-white/[0.06] bg-white/[0.05] backdrop-blur-[12px];
+  }
+
+  .site-grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .site-radial-glow {
+    background: radial-gradient(
+      60% 60% at 50% 0%,
+      rgba(94, 106, 210, 0.15) 0%,
+      rgba(19, 19, 21, 0) 100%
+    );
+  }
+
+  .abstract-cover {
+    background:
+      radial-gradient(circle at 30% 20%, rgba(94, 106, 210, 0.35), transparent 50%),
+      radial-gradient(circle at 80% 60%, rgba(49, 58, 160, 0.4), transparent 45%),
+      linear-gradient(145deg, #0e0e0f 0%, #1c1b1d 100%);
+  }
+}
