@@ -1306,7 +1306,8 @@ export default function SplashCursor({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 50,
+        // Below header (z-50) and main (z-10) so page content is not covered; above SiteBackground (z-0).
+        zIndex: 5,
         pointerEvents: 'none',
         width: '100%',
         height: '100%'
